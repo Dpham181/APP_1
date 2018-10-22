@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">App_1</string>
+
+<string name="COST_LABLE">Enter Cost/Price:</string>
+<string name="MONEY_LABLE">Enter Sales Tax %:</string>
+<string name="input1"/>
+<string name="input2"/>
+<string name="hint1">$</string>
+<string name="hint2">%</string>
+<string name="Output_tax">0</string>
+<string name="total_taxlabel">Total Tax:</string>
+<string name="total_costlabel">Total Cost/Price:</string>
+<string name="output_cost">0</string>
+</resources>
