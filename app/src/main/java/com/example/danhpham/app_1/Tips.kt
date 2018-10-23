@@ -13,7 +13,7 @@ internal fun Tipcal(bill: Double?,tip: Double?) :Double? {
 
     return ((bill!! * tip!!)/100 )+ bill!!
 }
-fun View.setVisibility(){
+ fun View.setVisibility(){
      if(visibility == VISIBLE ){
          visibility = INVISIBLE
      }else
@@ -30,15 +30,16 @@ class Tips : AppCompatActivity() {
         setContentView(R.layout.activity_tips)
 
 
-        val setInvisible = arrayOf(
-            bt_label, between_input, textView6, textView7, textView8, textView9, textView10, TA, TP, PTA, PTP
-
-        )
-        for (widget in setInvisible) {
+        val setBetween = arrayOf(bt_label, between_input)
+        val setTotal = arrayOf( textView6,textView7, TA, TP)
+        val setPerson = arrayOf(textView8, textView9, textView10, PTA, PTP)
+        val setInvisible = setBetween + setPerson + setTotal
+        for (widget  in setInvisible) {
             widget.setVisibility()
+
         }
 
-        fun TextView.ouput() {
+        fun TextView.amountouput() {
             val bill = bill_input.text
             val tip = tip_input.text
 
@@ -77,6 +78,32 @@ class Tips : AppCompatActivity() {
         }
 
         calculator.setOnClickListener {
+
+            TA.tipouput()
+            TP.amountouput()
+            if(bt_label.visibility == VISIBLE){
+
+                for(widget in setPerson){
+                    widget.setVisibility()
+                }
+                val slipTipAmount= TA.text
+
+                val slipAmount= TP.text
+                val slipByPerson = between_input.text
+                if(slipAmount.isNotEmpty() and slipByPerson.isNotEmpty() and slipTipAmount.isNotEmpty()){
+                    val personTipTotal = java.lang.Double.valueOf(slipTipAmount.toString()) / java.lang.Double.valueOf(slipByPerson.toString())
+                    PTA.text = personTipTotal.toString()
+                    val personAmountTotal = java.lang.Double.valueOf(slipAmount.toString()) / java.lang.Double.valueOf(slipByPerson.toString())
+                    PTP.text = personAmountTotal.toString()
+                }
+            }
+            else
+            {
+                for(widget in setTotal){
+                    widget.setVisibility()
+                }
+
+            }
 
         }
 
