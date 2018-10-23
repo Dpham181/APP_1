@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
 
             R.id.tips->{
 
-                Toast.makeText(this,"You selected ${item.title}, ", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, Tips::class.java)
+                startActivity(intent)
                 true;
             }
 

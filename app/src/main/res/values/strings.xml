@@ -1,14 +1,28 @@
 <resources>
     <string name="app_name">App_1</string>
 
-<string name="COST_LABLE">Enter Cost/Price:</string>
-<string name="MONEY_LABLE">Enter Sales Tax %:</string>
-<string name="input1"/>
-<string name="input2"/>
-<string name="hint1">$</string>
-<string name="hint2">%</string>
-<string name="Output_tax">0</string>
-<string name="total_taxlabel">Total Tax:</string>
-<string name="total_costlabel">Total Cost/Price:</string>
-<string name="output_cost">0</string>
+    <string name="COST_LABLE">Enter Cost/Price:</string>
+    <string name="MONEY_LABLE">Enter Sales Tax %:</string>
+    <string name="input1"/>
+    <string name="input2"/>
+    <string name="hint1">$</string>
+    <string name="hint2">%</string>
+    <string name="Output_tax">0</string>
+    <string name="total_taxlabel">Total Tax:</string>
+    <string name="total_costlabel">Total Cost/Price:</string>
+    <string name="output_cost">0</string>
+    <string name="Bill_label">Bill Amount</string>
+    <string name="tip_label">Tip</string>
+    <string name="Bill_input">$</string>
+    <string name="Tip_input">%</string>
+    <string name="slip_label">Slip Bill</string>
+    <string name="Check_box"/>
+    <string name="bt_label">Between</string>
+    <string name="Between_input">person</string>
+    <string name="calculator_label">Calculator</string>
+    <string name="totalT_label">Tip Amount</string>
+    <string name="totalP.label">Total Price</string>
+    <string name="person">Per Person</string>
+    <string name="TA">0</string>
+    <string name="TP">0</string>
 </resources>
