@@ -39,7 +39,8 @@ class Tips : AppCompatActivity() {
 
         }
 
-        fun TextView.amountouput() {
+        fun TextView.AmountOuput() {
+
             val bill = bill_input.text
             val tip = tip_input.text
 
@@ -80,10 +81,13 @@ class Tips : AppCompatActivity() {
         calculator.setOnClickListener {
 
             TA.tipouput()
-            TP.amountouput()
+            TP.AmountOuput()
             if(bt_label.visibility == VISIBLE){
 
                 for(widget in setPerson){
+                    widget.setVisibility()
+                }
+                for(widget in setTotal){
                     widget.setVisibility()
                 }
                 val slipTipAmount= TA.text

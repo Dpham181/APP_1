@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import android.content.Intent
+import android.view.View
 
 const val EXTRA_MESSAGE = "com.example.danhpham.app_1"
 
@@ -30,13 +31,14 @@ class MainActivity : AppCompatActivity() {
         return when(item?.itemId) // ITEMS NOT NULL CHECK BY USING ?
         {
             R.id.tax->{
-                val intent = Intent(this, test::class.java)
-                startActivity(intent)
+                val intent = Intent(this, Tax::class.java)
+                startActivity(intent) // call asyncronus
                 true;
 
             }
 
             R.id.gpa->{
+                // val i = Intent(<action>, <uri> ) implicit intent
 
                 true;
             }

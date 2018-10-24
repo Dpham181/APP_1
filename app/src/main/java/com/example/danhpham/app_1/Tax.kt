@@ -13,7 +13,7 @@ internal fun cal(cost: Double?, tax: Double?): Double? {
 }
 
 
-class test : AppCompatActivity() {
+class Tax : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +36,7 @@ class test : AppCompatActivity() {
                     if(input1.isNotEmpty() && input2.isNotEmpty()){
                         val finalCal = cal(java.lang.Double.valueOf(cost_input.text.toString()), java.lang.Double.valueOf(tax_input.text.toString()))
                         val finalcost= finalCal!! + java.lang.Double.valueOf(cost_input.text.toString())
-                        val ftax = finalCal.toString() + "%"
+                        val ftax = finalCal.toString() + "$"
                         val fcost = finalcost.toString() +"$"
                         output_tax.text = ftax
                         output_cost.text= fcost
