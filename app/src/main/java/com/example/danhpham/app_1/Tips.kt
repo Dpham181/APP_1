@@ -2,16 +2,21 @@ package com.example.danhpham.app_1
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.widget.ArrayAdapter
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_tips.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-internal fun Tipcal(bill: Double?,tip: Double?) :Double? {
+val tag = "Lifecycle of tip"
 
-    return ((bill!! * tip!!)/100 )+ bill!!
+
+internal fun Tipcal ( bill: Double?, tip: Double?) :Double? {
+    return ((bill!! * tip!!)/100 )+ bill
 }
  fun View.setVisibility(){
      if(visibility == VISIBLE ){
@@ -21,13 +26,16 @@ internal fun Tipcal(bill: Double?,tip: Double?) :Double? {
          visibility = VISIBLE
      }
 }
-
+val state_status = arrayOf(
+    "test"
+)
 
 class Tips : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tips)
+
 
 
         val setBetween = arrayOf(bt_label, between_input)
@@ -57,8 +65,8 @@ class Tips : AppCompatActivity() {
             val tip = tip_input.text
 
             if (bill.isNotEmpty() && tip.isNotEmpty()) {
-                val tip = Tipcal(java.lang.Double.valueOf(bill.toString()), java.lang.Double.valueOf(tip.toString()))
-                val finalTip = tip!! - java.lang.Double.valueOf(bill.toString())
+                val Tip = Tipcal(java.lang.Double.valueOf(bill.toString()), java.lang.Double.valueOf(tip.toString()))
+                val finalTip = Tip!! - java.lang.Double.valueOf(bill.toString())
                 this.text = finalTip.toString()
             } else
                 this.text = "0"
@@ -114,6 +122,40 @@ class Tips : AppCompatActivity() {
 
     }
 
+
+    override fun  onStart()
+    {
+        super.onStart();
+    }
+
+    override fun onRestart()
+    {
+        super.onRestart();
+        Log.d(tag , "onRestart()");
+    }
+
+    override fun onResume()
+    {
+        super.onResume();
+        Log.d(tag , " onResume() ");
+    }
+
+    override fun onPause()
+    {
+        super.onPause();
+        Log.d(tag , " onPause() ");
+    }
+    override fun onStop()
+    {
+        super.onStop();
+        Log.d(tag , "the onStop() " );
+    }
+
+    override fun onDestroy()
+    {
+        super.onDestroy();
+        Log.d(tag , " onDestroy() ");
+    }
     }
 
 

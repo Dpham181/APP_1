@@ -10,8 +10,8 @@
 
     <item
 
-            android:id = "@+id/gpa"
-            android:title = "GPA"
+            android:id = "@+id/BMI"
+            android:title = "BMI"
             app:showAsAction="ifRoom" />
 
 

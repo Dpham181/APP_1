@@ -4,22 +4,56 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import android.content.Intent
-import android.view.View
+import android.util.Log
 
-const val EXTRA_MESSAGE = "com.example.danhpham.app_1"
 
 class MainActivity : AppCompatActivity() {
+    val tag  =  "Lifecycle of main";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.d(tag , "In the onCreate() event");
 
 
     }
+    // ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>debug to test the life cycle activite
+    override fun  onStart()
+    {
+        super.onStart();
+        Log.d(tag , "onStart()");
+    }
 
+    override fun onRestart()
+    {
+        super.onRestart();
+        Log.d(tag , " onRestart() ");
+    }
+
+    override fun onResume()
+    {
+        super.onResume();
+        Log.d(tag , " onResume() ");
+    }
+
+    override fun onPause()
+    {
+        super.onPause();
+        Log.d(tag , " onPause() ");
+    }
+
+    override fun onStop()
+    {
+        super.onStop();
+        Log.d(tag , " onStop()" );
+    }
+
+    override fun onDestroy()
+    {
+        super.onDestroy();
+        Log.d(tag , "onDestroy()");
+    }
     override fun onCreateOptionsMenu(menu: Menu?):Boolean {
         menuInflater.inflate(R.menu.actions, menu)
         return super.onCreateOptionsMenu(menu)
@@ -37,8 +71,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            R.id.gpa->{
-                // val i = Intent(<action>, <uri> ) implicit intent
+            R.id.BMI->{
 
                 true;
             }
