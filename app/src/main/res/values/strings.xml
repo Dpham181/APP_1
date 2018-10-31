@@ -25,4 +25,12 @@
     <string name="person">Per Person</string>
     <string name="TA">0</string>
     <string name="TP">0</string>
+    <string name="input_unit_text">From</string>
+    <string name="output_unit_text">To</string>
+    <string name="result_text">0</string>
+    <string name="unitEditText">Enter here</string>
+    <string name="unit_converter">Unit Converter</string>
+    <string name="tax">TAX</string>
+    <string name="bmi">BMI</string>
+    <string name="tips">TIPS</string>
 </resources>

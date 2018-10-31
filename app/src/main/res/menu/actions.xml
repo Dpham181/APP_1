@@ -4,23 +4,28 @@
     <item
 
             android:id = "@+id/tax"
-            android:title = "TAX"
+            android:title = "@string/tax"
             app:showAsAction="always|withText" />
 
 
     <item
 
             android:id = "@+id/BMI"
-            android:title = "BMI"
+            android:title = "@string/bmi"
             app:showAsAction="ifRoom" />
 
 
     <item
 
             android:id = "@+id/tips"
-            android:title = "TIPS"
+            android:title = "@string/tips"
             app:showAsAction="ifRoom" />
 
+    <item
+
+            android:id = "@+id/unit_converter"
+            android:title = "@string/unit_converter"
+            app:showAsAction="ifRoom" />
 
 
 </menu>

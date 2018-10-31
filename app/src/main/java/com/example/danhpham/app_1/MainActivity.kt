@@ -60,6 +60,12 @@ class MainActivity : AppCompatActivity() {
                 true;
             }
 
+            R.id.unit_converter->{
+                val intent = Intent(this, UnitConverter::class.java)
+                startActivity(intent)
+                true;
+            }
+
             else->{
                 super.onOptionsItemSelected(item)
             }
