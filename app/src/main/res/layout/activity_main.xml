@@ -8,5 +8,14 @@
         tools:context=".MainActivity">
 
 
-
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/textView3" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.463" android:layout_marginBottom="13dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp" android:textStyle="bold" android:textColor="@color/colorAccent"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:textSize="30sp"/>
 </android.support.constraint.ConstraintLayout>

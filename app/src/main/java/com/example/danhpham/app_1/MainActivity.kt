@@ -14,39 +14,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(tag , "In the onCreate() event");
+        Log.d(tag , " onCreate()");
 
 
     }
     // ->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>debug to test the life cycle activite
-    override fun  onStart()
-    {
-        super.onStart();
-        Log.d(tag , "onStart()");
-    }
-
-    override fun onRestart()
-    {
-        super.onRestart();
-        Log.d(tag , " onRestart() ");
-    }
 
     override fun onResume()
     {
         super.onResume();
         Log.d(tag , " onResume() ");
-    }
-
-    override fun onPause()
-    {
-        super.onPause();
-        Log.d(tag , " onPause() ");
-    }
-
-    override fun onStop()
-    {
-        super.onStop();
-        Log.d(tag , " onStop()" );
     }
 
     override fun onDestroy()

@@ -1,11 +1,16 @@
 package com.example.danhpham.app_1
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_tax.*
+
+
 
 internal fun cal(cost: Double?, tax: Double?): Double? {
 
@@ -15,11 +20,13 @@ internal fun cal(cost: Double?, tax: Double?): Double? {
 
 class Tax : AppCompatActivity() {
 
+    val tag = "Lifecycle of Tax"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tax)
+        Log.d(tag , " onCreate()");
 
 
         fun EditText.setWatcher() {
@@ -54,4 +61,10 @@ class Tax : AppCompatActivity() {
         cost_input.setWatcher()
 
     }
+
+    override fun onDestroy()
+    {
+        super.onDestroy();
+    }
+
 }

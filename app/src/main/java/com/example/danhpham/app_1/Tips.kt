@@ -26,15 +26,14 @@ internal fun Tipcal ( bill: Double?, tip: Double?) :Double? {
          visibility = VISIBLE
      }
 }
-val state_status = arrayOf(
-    "test"
-)
+
 
 class Tips : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tips)
+        Log.d(tag , " onCreate()");
 
 
 
@@ -121,35 +120,7 @@ class Tips : AppCompatActivity() {
 
 
     }
-
-
-    override fun  onStart()
-    {
-        super.onStart();
-    }
-
-    override fun onRestart()
-    {
-        super.onRestart();
-        Log.d(tag , "onRestart()");
-    }
-
-    override fun onResume()
-    {
-        super.onResume();
-        Log.d(tag , " onResume() ");
-    }
-
-    override fun onPause()
-    {
-        super.onPause();
-        Log.d(tag , " onPause() ");
-    }
-    override fun onStop()
-    {
-        super.onStop();
-        Log.d(tag , "the onStop() " );
-    }
+    
 
     override fun onDestroy()
     {
