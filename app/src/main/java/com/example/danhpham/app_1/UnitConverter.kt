@@ -28,32 +28,14 @@ class UnitConverter : AppCompatActivity() {
         inputListView.adapter = adapter
         outputListView.adapter = adapter
 
+        inputListView.setOnItemClickListener { _, _, position, _ ->
 
-        val textChangeListener = object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-
+            when (units[position]) {
+                "Celsius" -> outputListView.convertFromCelsius(resultTextView, inputEditText, outputListView)
+                "Kelvin" -> outputListView.convertFromKelvin()
+                "Fahrenheit" -> outputListView.convertFromFahrenheit()
             }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val notEmpty : TextView.() -> Boolean = { text.isNotEmpty() }
-                if (notEmpty(inputEditText)) {
-                    inputListView.setOnItemClickListener { _, _, position, _ ->
-                        when (units[position]) {
-                            "Celsius" -> outputListView.convertFromCelsius(resultTextView, inputEditText, outputListView)
-                            "Kelvin" -> outputListView.convertFromKelvin()
-                            "Fahrenheit" -> outputListView.convertFromFahrenheit()
-                        }
-
-                    }
-                }
-            }
-
         }
-        inputEditText.addTextChangedListener(textChangeListener)
     }
 }
 
@@ -62,7 +44,7 @@ private fun ListView.convertFromCelsius(result: TextView?, input: EditText?, out
         val start = java.lang.Double.valueOf(input!!.text.toString())
         when (units[position]) {
             "Celsius" -> result!!.text = input.text
-            "Kelvin" -> result!!.celsiusToKelvin(start, result)
+            "Kelvin" -> result!!.celsiusToKelvin(start, result, input)
             "Fahrenheit" -> result!!.celsiusToFahrenheit(start, result)
         }
     }
@@ -76,9 +58,29 @@ private fun ListView.convertFromFahrenheit() {
 
 }
 
-private fun TextView.celsiusToKelvin(start : Double?, result: TextView?) {
-    val end = start!! + 273.15
-    result!!.text = end.toString()
+private fun TextView.celsiusToKelvin(initialUnit: Double?, result: TextView?, input: EditText?) {
+    val convertedUnit = initialUnit!! + 273.15
+    result!!.text = convertedUnit.toString()
+    val textChangeListener = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            val notEmpty: TextView.() -> Boolean = { text.isNotEmpty() }
+            if (notEmpty(input!!)) {
+                val originalUnit = java.lang.Double.valueOf(input.text.toString())
+                val convertUnit = originalUnit + 273.15
+                result.text = convertUnit.toString()
+            }
+        }
+    }
+    input!!.addTextChangedListener(textChangeListener)
+
 }
 
 private fun TextView.celsiusToFahrenheit(start : Double?, result: TextView?) {
@@ -86,5 +88,7 @@ private fun TextView.celsiusToFahrenheit(start : Double?, result: TextView?) {
     result!!.text = end.toString()
 }
 
+private fun textWatcherManager() {
 
+}
 
