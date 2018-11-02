@@ -10,6 +10,7 @@ import com.example.danhpham.app_1.R.id.*
 
 import kotlinx.android.synthetic.main.activity_unit_converter.*
 import kotlinx.android.synthetic.main.activity_unit_converter.view.*
+import java.lang.NumberFormatException
 
 val units = arrayOf(
     "Celsius",
@@ -41,11 +42,15 @@ class UnitConverter : AppCompatActivity() {
 
 private fun ListView.convertFromCelsius(result: TextView?, input: EditText?, outputList: ListView?) {
     outputList!!.setOnItemClickListener { _, _, position, _ ->
-        val start = java.lang.Double.valueOf(input!!.text.toString())
-        when (units[position]) {
-            "Celsius" -> result!!.text = input.text
-            "Kelvin" -> result!!.celsiusToKelvin(start, result, input)
-            "Fahrenheit" -> result!!.celsiusToFahrenheit(start, result)
+        try {
+            val start = java.lang.Double.valueOf(input!!.text.toString())
+            when (units[position]) {
+                "Celsius" -> result!!.text = input.text
+                "Kelvin" -> result!!.celsiusToKelvin(start, result, input)
+                "Fahrenheit" -> result!!.celsiusToFahrenheit(start, result, input)
+            }
+        } catch (e: NumberFormatException) {
+            return@setOnItemClickListener
         }
     }
 }
@@ -73,9 +78,13 @@ private fun TextView.celsiusToKelvin(initialUnit: Double?, result: TextView?, in
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             val notEmpty: TextView.() -> Boolean = { text.isNotEmpty() }
             if (notEmpty(input!!)) {
-                val originalUnit = java.lang.Double.valueOf(input.text.toString())
-                val convertUnit = originalUnit + 273.15
-                result.text = convertUnit.toString()
+                try {
+                    val originalUnit = java.lang.Double.valueOf(input.text.toString())
+                    val convertUnit = originalUnit + 273.15
+                    result.text = convertUnit.toString()
+                } catch (e: NumberFormatException) {
+                    return
+                }
             }
         }
     }
@@ -83,12 +92,49 @@ private fun TextView.celsiusToKelvin(initialUnit: Double?, result: TextView?, in
 
 }
 
-private fun TextView.celsiusToFahrenheit(start : Double?, result: TextView?) {
+private fun TextView.celsiusToFahrenheit(initialUnit: Double?, result: TextView?, input: EditText?) {
+//    val end = (start!! * 9/5) + 32
+//    result!!.text = end.toString()
+    textWatcherManager(
+        result,
+        input,
+        initialUnit,
+        ::convertCToF)
+}
+
+private fun convertCToF(start : Double?, result: TextView?) {
     val end = (start!! * 9/5) + 32
     result!!.text = end.toString()
 }
 
-private fun textWatcherManager() {
+private fun textWatcherManager(
+    result: TextView?,
+    input: EditText?,
+    initialUnit: Double?,
+    f: (initialUnit: Double?, result: TextView?) -> Unit
+) {
+    f.invoke(initialUnit, result)
+    val textChangeListener = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
 
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            val notEmpty: TextView.() -> Boolean = { text.isNotEmpty() }
+            if (notEmpty(input!!)) {
+                try {
+                    val originalUnit = java.lang.Double.valueOf(input.text.toString())
+                    f.invoke(originalUnit, result)
+                } catch (e: NumberFormatException) {
+                    return
+                }
+            }
+        }
+    }
+    input!!.addTextChangedListener(textChangeListener)
 }
 
