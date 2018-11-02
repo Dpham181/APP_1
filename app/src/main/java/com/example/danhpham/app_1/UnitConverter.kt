@@ -4,12 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.*
-import com.example.danhpham.app_1.R.id.*
 
 import kotlinx.android.synthetic.main.activity_unit_converter.*
-import kotlinx.android.synthetic.main.activity_unit_converter.view.*
 import java.lang.NumberFormatException
 import java.util.*
 
