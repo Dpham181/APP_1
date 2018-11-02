@@ -40,12 +40,20 @@ class UnitConverter : AppCompatActivity() {
     }
 }
 
+/**
+ * Return result displayed to two decimals place
+ */
 private fun TextView.toTwoDec(num: Double?): String {
     return String.format(Locale.US, "%.2f", num)
 }
 
+/**
+ * Function convert temperature unit from Celsius degree given a TextView, a EditText and a ListView
+ */
 private fun ListView.convertFromCelsius(result: TextView?, input: EditText?, outputList: ListView?) {
+    // Provide call back function for the left ListView (input ListView)
     outputList!!.setOnItemClickListener { _, _, position, _ ->
+        // Using try-catch to eliminate the conversion of "-" character
         try {
             val start = java.lang.Double.valueOf(input!!.text.toString())
             when (units[position]) {
@@ -59,6 +67,9 @@ private fun ListView.convertFromCelsius(result: TextView?, input: EditText?, out
     }
 }
 
+/**
+ * Function convert temperature unit from Kelvin degree given a TextView, a EditText and a ListView
+ */
 private fun ListView.convertFromKelvin(result: TextView?, input: EditText?, outputList: ListView?) {
     outputList!!.setOnItemClickListener { _, _, position, _ ->
         try {
@@ -67,6 +78,24 @@ private fun ListView.convertFromKelvin(result: TextView?, input: EditText?, outp
                 "Celsius" -> result!!.kelvinToCelsius(start, result, input)
                 "Kelvin" -> result!!.text = input.text
                 "Fahrenheit" -> result!!.kelvinToFahrenheit(start, result, input)
+            }
+        } catch (e: NumberFormatException) {
+            return@setOnItemClickListener
+        }
+    }
+}
+
+/**
+ * Function convert temperature unit from Fahrenheit degree given a TextView, a EditText and a ListView
+ */
+private fun ListView.convertFromFahrenheit(result: TextView?, input: EditText?, outputList: ListView?) {
+    outputList!!.setOnItemClickListener { _, _, position, _ ->
+        try {
+            val start = java.lang.Double.valueOf(input!!.text.toString())
+            when (units[position]) {
+                "Celsius" -> result!!.fahrenheitToCelsius(start, result, input)
+                "Kelvin" -> result!!.fahrenheitToKelvin(start, result, input)
+                "Fahrenheit" -> result!!.text = input.text
             }
         } catch (e: NumberFormatException) {
             return@setOnItemClickListener
@@ -90,39 +119,12 @@ private fun TextView.kelvinToCelsius(initialUnit: Double?, result: TextView?, in
         ::convertKToC)
 }
 
-private fun convertKToC(start : Double?, result: TextView?) {
-    result!!.text = result.toTwoDec(start!! - 273.15)
-}
-
-private fun convertKToF(start : Double?, result: TextView?) {
-    result!!.text = result.toTwoDec((start!! - 273.15) * 9/5 + 32)
-}
-
-private fun ListView.convertFromFahrenheit(result: TextView?, input: EditText?, outputList: ListView?) {
-    outputList!!.setOnItemClickListener { _, _, position, _ ->
-        try {
-            val start = java.lang.Double.valueOf(input!!.text.toString())
-            when (units[position]) {
-                "Celsius" -> result!!.fahrenheitToCelsius(start, result, input)
-                "Kelvin" -> result!!.fahrenheitToKelvin(start, result, input)
-                "Fahrenheit" -> result!!.text = input.text
-            }
-        } catch (e: NumberFormatException) {
-            return@setOnItemClickListener
-        }
-    }
-}
-
 private fun TextView.fahrenheitToKelvin(initialUnit: Double?, result: TextView?, input: EditText?) {
     textWatcherManager(
         result,
         input,
         initialUnit,
         ::convertFToK)
-}
-
-private fun convertFToK(start : Double?, result: TextView?) {
-    result!!.text = result.toTwoDec((start!! - 32.0) * 5/9 + 273.15)
 }
 
 private fun TextView.fahrenheitToCelsius(initialUnit: Double?, result: TextView?, input: EditText?) {
@@ -133,20 +135,12 @@ private fun TextView.fahrenheitToCelsius(initialUnit: Double?, result: TextView?
         ::convertFtoC)
 }
 
-private fun convertFtoC(start : Double?, result: TextView?) {
-    result!!.text = result.toTwoDec((start!! - 32.0) * 5/9)
-}
-
 private fun TextView.celsiusToKelvin(initialUnit: Double?, result: TextView?, input: EditText?) {
     textWatcherManager(
         result,
         input,
         initialUnit,
         ::convertCToK)
-}
-
-private fun convertCToK(start : Double?, result: TextView?) {
-    result!!.text = result.toTwoDec(start!! + 273.15)
 }
 
 private fun TextView.celsiusToFahrenheit(initialUnit: Double?, result: TextView?, input: EditText?) {
@@ -157,10 +151,34 @@ private fun TextView.celsiusToFahrenheit(initialUnit: Double?, result: TextView?
         ::convertCToF)
 }
 
+private fun convertKToC(start : Double?, result: TextView?) {
+    result!!.text = result.toTwoDec(start!! - 273.15)
+}
+
+private fun convertKToF(start : Double?, result: TextView?) {
+    result!!.text = result.toTwoDec((start!! - 273.15) * 9/5 + 32)
+}
+
+private fun convertFToK(start : Double?, result: TextView?) {
+    result!!.text = result.toTwoDec((start!! - 32.0) * 5/9 + 273.15)
+}
+
+private fun convertFtoC(start : Double?, result: TextView?) {
+    result!!.text = result.toTwoDec((start!! - 32.0) * 5/9)
+}
+
+private fun convertCToK(start : Double?, result: TextView?) {
+    result!!.text = result.toTwoDec(start!! + 273.15)
+}
+
 private fun convertCToF(start : Double?, result: TextView?) {
     result!!.text = result.toTwoDec((start!! * 9/5) + 32.0)
 }
 
+/**
+ * This function is used for watching the input text on change.
+ * It will update the result TextView according to the new user's input on typing.
+ */
 private fun textWatcherManager(
     result: TextView?,
     input: EditText?,
