@@ -14,10 +14,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 val tag = "Lifecycle of tip"
 
-
+// function for cal
 internal fun Tipcal ( bill: Double?, tip: Double?) :Double? {
     return ((bill!! * tip!!)/100 )+ bill
 }
+// function for show and hide text
  fun View.setVisibility(){
      if(visibility == VISIBLE ){
          visibility = INVISIBLE
@@ -35,7 +36,7 @@ class Tips : AppCompatActivity() {
         setContentView(R.layout.activity_tips)
         Log.d(tag , " onCreate()");
 
-
+        // set all the array to match with the text for using the show and hide function
 
         val setBetween = arrayOf(bt_label, between_input)
         val setTotal = arrayOf( textView6,textView7, TA, TP)
@@ -45,7 +46,7 @@ class Tips : AppCompatActivity() {
             widget.setVisibility()
 
         }
-
+        // checking two input if empty or not then cal tostring the output for amount
         fun TextView.AmountOuput() {
 
             val bill = bill_input.text
@@ -58,6 +59,7 @@ class Tips : AppCompatActivity() {
                 this.text = "0"
 
         }
+        // checking two input if empty or not then cal tostring the output for tip
 
         fun TextView.tipouput() {
             val bill = bill_input.text
@@ -71,6 +73,7 @@ class Tips : AppCompatActivity() {
                 this.text = "0"
 
         }
+        // function for checkbox if checked then show the slip input otherwise hiding as default.
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 bt_label.setVisibility()
@@ -84,7 +87,8 @@ class Tips : AppCompatActivity() {
 
             }
         }
-
+        // buuton for calcuation final output with hiding function
+        // show and hide final output if slip or not
         calculator.setOnClickListener {
 
             TA.tipouput()

@@ -22,12 +22,12 @@ class Tax : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val tag = "Lifecycle of Tax"
-
+    // lifecycle check
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tax)
         Log.d(tag , " onCreate()");
 
-
+    // two edittext and textwacher to onchange cal
         fun EditText.setWatcher() {
             this.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
