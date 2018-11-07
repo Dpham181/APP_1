@@ -33,4 +33,17 @@
     <string name="tax">TAX</string>
     <string name="bmi">BMI</string>
     <string name="tips">TIPS</string>
+
+    <string name="heightLbl">Height</string>
+    <string name="weightLbl">Weight</string>
+    <string name="heightStandardHint">5 ft</string>
+    <string name="heightStandardHintExtra">5 inches</string>
+    <string name="weightStandardHint">130 lbs</string>
+
+    <string name="heightMetricHint">100 cm</string>
+    <string name="weightMetricHint">20 kg</string>
+
+    <string name="bmiLbl">BMI:</string>
+    <string name="bmiResults">0</string>
+    <string name="bmiCategory">Category</string>
 </resources>

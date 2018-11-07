@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.BMI->{
-
+                val intent = Intent(this, BMI::class.java)
+                startActivity(intent) //call asynchronous
                 true;
             }
 
