@@ -13,40 +13,40 @@
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/textView2"
             app:layout_constraintBaseline_toBaselineOf="@+id/output_cost"
-    />
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@+id/output_tax"
-            android:text="@string/total_taxlabel"/>
+            android:text="@string/total_taxlabel" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
     <TextView
             android:text="@string/output_cost"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/output_cost"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/barrier4"
-            android:layout_marginLeft="156dp" android:layout_marginStart="156dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.032"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
+            app:layout_constraintStart_toEndOf="@+id/barrier4" android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/output_tax"/>
     <TextView
             android:id="@+id/output_tax"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/Output_tax"
             android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.65"
-            app:layout_constraintVertical_bias="0.747" app:layout_constraintStart_toEndOf="@+id/barrier4"
-            android:layout_marginStart="160dp" app:layout_constraintBottom_toTopOf="@+id/output_cost"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
+            app:layout_constraintStart_toEndOf="@+id/barrier4" android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp" app:layout_constraintTop_toBottomOf="@+id/tax_input"
+            app:layout_constraintVertical_bias="0.3"/>
 
     <TextView
             android:id="@+id/linklable"
@@ -54,11 +54,12 @@
             android:layout_height="wrap_content"
             android:text="@string/MONEY_LABLE"
             app:layout_constraintBaseline_toBaselineOf="@+id/tax_input"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
 
     <EditText
             android:id="@+id/cost_input"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
             android:ems="10"
@@ -67,11 +68,13 @@
             android:text="@string/input1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="Autofill" android:layout_marginEnd="4dp" android:layout_marginRight="4dp"/>
+            tools:ignore="Autofill" android:layout_marginEnd="32dp" android:layout_marginRight="32dp"
+            app:layout_constraintStart_toEndOf="@+id/barrier4" android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"/>
 
     <EditText
             android:id="@+id/tax_input"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
@@ -80,7 +83,8 @@
             android:text="@string/input2"
             app:layout_constraintEnd_toEndOf="@+id/cost_input"
             app:layout_constraintTop_toBottomOf="@+id/cost_input"
-            tools:ignore="Autofill" app:layout_constraintStart_toStartOf="@+id/cost_input"/>
+            tools:ignore="Autofill" app:layout_constraintStart_toStartOf="@+id/cost_input"
+    />
 
     <TextView
             android:id="@+id/datalable"
@@ -88,7 +92,8 @@
             android:layout_height="wrap_content"
             android:text="@string/COST_LABLE"
             app:layout_constraintBaseline_toBaselineOf="@+id/cost_input"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
 
     <android.support.constraint.Barrier
             android:id="@+id/barrier4"
