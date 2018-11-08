@@ -28,10 +28,11 @@ internal fun EditText.checkValid(): Double {
     }
 }
 
+//converts the number decimal place
 private fun convertToDeciplace(`in`: Double): String {
 
     val df = DecimalFormat("#.#")
-
+//return 0.0 if empty, otherwise format into decimal
     return if(`in`.isNaN()){
         df.format(0.0)
     } else {
@@ -41,7 +42,7 @@ private fun convertToDeciplace(`in`: Double): String {
 
 class BMI : AppCompatActivity() {
 
-    //text watcher object override
+    //text watcher object override for standard units
     private val textListenerStandard = object:TextWatcher{
         override fun afterTextChanged(s: Editable?) {}
 
@@ -54,16 +55,13 @@ class BMI : AppCompatActivity() {
             val weightMain = weightIn.checkValid()
 
             //apply calculation based on unit system selected
+            val resultNum = bmiCalcStandard(heightMain.toInt(), heightSecondary.toInt(), weightMain.toInt()) //type cast as int for calulation reasons
+            val finalResult = convertToDeciplace(resultNum)
 
-                val resultNum = bmiCalcStandard(heightMain.toInt(), heightSecondary.toInt(), weightMain.toInt()) //type cast as int for calulation reasons
-
-
-                val finalResult = convertToDeciplace(resultNum)
-
-                val cat = setCategory(resultNum)
-
-                bmiCalculated.text = finalResult
-                bmiCategory.text = cat
+            //return the category and bmi results
+            val cat = setCategory(resultNum)
+            bmiCalculated.text = finalResult
+            bmiCategory.text = cat
 
 
 //            }
@@ -71,6 +69,7 @@ class BMI : AppCompatActivity() {
 
         }
     }
+    //text listener object for the metric system
     private val textListenerMetric = object:TextWatcher{
         override fun afterTextChanged(s: Editable?) {}
 
@@ -78,15 +77,15 @@ class BMI : AppCompatActivity() {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
+            //checks if the fields is empty
             val heightMain = heightFeetIn.checkValid()
             val weightMain = weightIn.checkValid()
-
-
+            // calculates and formats the answer
             val resultNum = bmiCalcMetric(heightMain, weightMain)
             val finalResult = convertToDeciplace(resultNum)
 
+            //sets category and results
             val cat = setCategory(resultNum)
-
             bmiCalculated.text = finalResult
             bmiCategory.text = cat
 
@@ -95,11 +94,11 @@ class BMI : AppCompatActivity() {
     //used by list view to initiate the standard unit fields
     private fun setStandardUnits(heightMain:EditText?, heightSecond:EditText?, weightMain:EditText?){
 
-        //sets the visibility as true
+        //sets the visibility of second editText
         if(heightSecond!!.visibility == View.GONE){
             heightSecond!!.visibility = View.VISIBLE
         }
-        //set hints to fit the unit system
+        //set hints to fit the unit system (standard)
         heightMain!!.setHint(R.string.heightStandardHint)
         heightSecond!!.setHint(R.string.heightStandardHintExtra)
         weightMain!!.setHint(R.string.weightStandardHint)
@@ -110,7 +109,7 @@ class BMI : AppCompatActivity() {
         weightMain!!.setText("")
 
 
-        //add listener for the fields
+        //add listener for the fields (standard units)
         heightMain!!.addTextChangedListener(textListenerStandard)
         heightSecond!!.addTextChangedListener(textListenerStandard)
         weightMain!!.addTextChangedListener(textListenerStandard)
@@ -120,18 +119,20 @@ class BMI : AppCompatActivity() {
     //used by list view to initiate metric unit fields
     internal fun setMetricUnits(heightMain:EditText?, heightSecond:EditText?, weightMain:EditText?){
 
-        //sets the visibility to false to hide
+        //sets the visibility of second EditText to false to hide
         if(heightSecond!!.visibility == View.VISIBLE) {
             heightSecond!!.visibility = View.GONE //sets the visibility of the 2nd field to not be usable
         }
 
+        //sets hints
         heightMain!!.setHint(R.string.heightMetricHint)
         weightMain!!.setHint(R.string.weightMetricHint)
 
+        //clears the editText
         heightMain!!.setText("")
         weightMain!!.setText("")
 
-        //set hints and strings
+        //set the textListener object for the metric system
         heightMain!!.addTextChangedListener(textListenerMetric)
         weightMain!!.addTextChangedListener(textListenerMetric)
     }
@@ -147,6 +148,7 @@ class BMI : AppCompatActivity() {
         val heightInSecond = heightInchesIn
         val weightInMain = weightIn
 
+        //applies adapter to listview for unit selection
         val adapt = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, unitList)
 
         unitListView.adapter = adapt
@@ -154,12 +156,14 @@ class BMI : AppCompatActivity() {
         //call methods for which unit system is selected
         unitListView.setOnItemClickListener { _, _, position, _ ->
             when(unitList[position]){
+                //calls method and listener based on unit system
                 "Standard" -> setStandardUnits(heightInMain, heightInSecond, weightInMain)
                 "Metric" -> setMetricUnits(heightInMain, heightInSecond, weightInMain)
 
             }
         }
 
+        //sets default units as US standard for calculation
         unitListView.setSelection(0)
         setStandardUnits(heightInMain, heightInSecond, weightInMain)
 

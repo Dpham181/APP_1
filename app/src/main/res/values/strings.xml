@@ -46,4 +46,14 @@
     <string name="bmiLbl">BMI:</string>
     <string name="bmiResults">0</string>
     <string name="bmiCategory">Category</string>
+
+    <string name="teamName">Team TDB</string>
+    <string name="memberOne">Danh Pham</string>
+    <string name="memberTwo">Thomas Ngo</string>
+    <string name="memberThree">Brian Cabantug</string>
+    <string name="welcomeText">Welcome to the multi calculator application! This app contains 4 different calculators: Tax, Tip, Unit Conversion, and Body Mass Index (BMI). To select a calculator, click on one of them in the top right corner or under the menu in the action bar. Here are the instructions for each:</string>
+    <string name="instructionsTax">Enter the subtotal and the tax percentage. The tax amount will be displayed as well as the full total.</string>
+    <string name="instructionsBMI">Select the system of units(default set to Standard). Enter the height(feet and inches for standard/cm for metric) and weight(pounds for standard/kg for metric). The BMI number and category will display.</string>
+    <string name="instructionsUnitConversion">Select the units on the left side FIRST. Then enter the amount being converted. Then select the unit to convert to. It will display the calculated conversion.</string>
+    <string name="instructionsTip">Enter the subtotal and the percentage you want to tip. The tip amount will be shown. Select the split bill for multiple people and enter the amount of people to show how much each person pays for tip.</string>
 </resources>
