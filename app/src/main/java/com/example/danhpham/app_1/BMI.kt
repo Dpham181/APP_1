@@ -39,7 +39,6 @@ private fun convertToDeciplace(`in`: Double): String {
         df.format(`in`)
     }
 }
-
 class BMI : AppCompatActivity() {
 
     //text watcher object override for standard units

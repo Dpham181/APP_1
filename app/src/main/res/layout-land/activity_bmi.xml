@@ -10,47 +10,45 @@
     <TextView
             android:text="Height"
             android:layout_width="wrap_content"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
             android:id="@+id/heightLabel" android:layout_marginTop="44dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/heightFeetIn" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.6" android:layout_marginBottom="8dp"
+            app:layout_constraintHorizontal_bias="0.18" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:text="Weight"
             android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:id="@+id/weightLabel"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
             app:layout_constraintEnd_toStartOf="@+id/weightIn" android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.6"
-            android:layout_marginTop="52dp" app:layout_constraintTop_toBottomOf="@+id/heightLabel"/>
+            android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.18"
+            android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/heightLabel"/>
     <EditText
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="42dp"
             android:inputType="numberSigned"
             android:ems="10"
             android:id="@+id/heightFeetIn" android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="192dp"
-            android:layout_marginRight="192dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
+            android:layout_marginEnd="232dp"
+            android:layout_marginRight="232dp" app:layout_constraintEnd_toEndOf="parent"
+    />
     <EditText
-            android:layout_width="99dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="numberSigned"
             android:ems="10"
-            android:id="@+id/weightIn" android:layout_marginEnd="192dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="192dp"
-            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/heightFeetIn"/>
+            android:id="@+id/weightIn" android:layout_marginEnd="232dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="232dp"
+            android:layout_marginTop="12dp" app:layout_constraintTop_toBottomOf="@+id/heightFeetIn"/>
     <EditText
-            android:layout_width="104dp"
+            android:layout_width="0dp"
             android:layout_height="42dp"
             android:inputType="numberSigned"
             android:ems="10"
@@ -58,24 +56,25 @@
             android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="40dp"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="0.892"/>
+            app:layout_constraintStart_toEndOf="@+id/heightFeetIn" android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"/>
     <ListView
             android:layout_width="0dp"
             android:layout_height="122dp"
             android:id="@+id/unitListView" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            android:layout_marginTop="96dp" app:layout_constraintTop_toBottomOf="@+id/heightLabel"/>
+            android:layout_marginTop="40dp" app:layout_constraintTop_toBottomOf="@+id/heightLabel"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.435"/>
     <TextView
             android:text="@string/bmiLbl"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="61dp"
+            android:layout_height="38dp"
             android:id="@+id/bmiLabel" android:textSize="26sp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="40dp" android:layout_marginStart="40dp" android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/unitListView" app:layout_constraintVertical_bias="0.52"/>
+            app:layout_constraintTop_toBottomOf="@+id/unitListView" app:layout_constraintVertical_bias="0.35000002"/>
     <TextView
             android:text="@string/bmiResults"
             android:layout_width="0dp"
@@ -86,7 +85,7 @@
             app:layout_constraintStart_toEndOf="@+id/bmiLabel" android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/bmiCategory" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.522"/>
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.35000002"/>
     <TextView
             android:text="@string/bmiCategory"
             android:layout_width="wrap_content"
@@ -95,7 +94,7 @@
             android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/unitListView"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginEnd="32dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
-            app:layout_constraintVertical_bias="0.52"/>
+            app:layout_constraintVertical_bias="0.35000002"/>
     <android.support.constraint.Barrier android:layout_width="wrap_content" android:layout_height="wrap_content"
                                         android:id="@+id/barrier2" app:barrierDirection="left"
                                         app:constraint_referenced_ids="bmiCategory,bmiCalculated"
