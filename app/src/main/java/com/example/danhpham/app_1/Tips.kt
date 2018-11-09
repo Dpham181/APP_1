@@ -96,10 +96,10 @@ class Tips : AppCompatActivity() {
             if(bt_label.visibility == VISIBLE){
 
                 for(widget in setPerson){
-                    widget.setVisibility()
+                    widget.visibility = VISIBLE
                 }
                 for(widget in setTotal){
-                    widget.setVisibility()
+                    widget.visibility = VISIBLE
                 }
                 val slipTipAmount= TA.text
 
@@ -112,12 +112,14 @@ class Tips : AppCompatActivity() {
                     PTP.text = personAmountTotal.toString()
                 }
             }
-            else
+            else if(bt_label.visibility == INVISIBLE)
             {
-                for(widget in setTotal){
-                    widget.setVisibility()
+                for(widget in setPerson){
+                    widget.visibility = INVISIBLE
                 }
-
+                for(widget in setTotal){
+                    widget.visibility = VISIBLE
+                }
             }
 
         }

@@ -158,7 +158,6 @@ class BMI : AppCompatActivity() {
                 //calls method and listener based on unit system
                 "Standard" -> setStandardUnits(heightInMain, heightInSecond, weightInMain)
                 "Metric" -> setMetricUnits(heightInMain, heightInSecond, weightInMain)
-
             }
         }
 
